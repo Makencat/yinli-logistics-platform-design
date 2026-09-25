@@ -1,0 +1,44 @@
+<nav-bar title="提货进度 · 面向客户" show-back="{{true}}"></nav-bar>
+
+<view class="page" wx:if="{{demand}}">
+  <view class="card">
+    <view class="row gap12">
+      <view class="c-icon"><image class="icon" src="{{icons.box[1]}}" mode="aspectFit"/></view>
+      <view class="col grow">
+        <text class="title-sm">{{demand.product}} · 批次 {{demand.lot}}</text>
+        <text class="text-dim text-xs mt16">{{demand.category}} · {{demand.customer}}</text>
+      </view>
+    </view>
+    <view class="divider"></view>
+    <view class="row between">
+      <view class="col">
+        <text class="text-dim text-xs">需求数量</text>
+        <view class="num c-cyan" style="font-size:42rpx">{{demand.qtyText}}</view>
+      </view>
+      <view class="col" style="align-items:flex-end">
+        <text class="text-dim text-xs">期望时间窗口</text>
+        <text class="text-sm mt8">{{demand.window}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section-title">全程协同进度</view>
+  <view class="card plain" wx:if="{{reserve}}">
+    <view class="order-steps">
+      <view class="os-item {{index <= 2 ? 'os-done' : index <= 3 ? 'os-on' : ''}}" wx:for="{{reserve.track}}" wx:key="time">
+        <view class="os-head">
+          <view class="os-dot"></view>
+          <text class="os-time text-dim text-xs">{{item.time}}</text>
+        </view>
+        <view class="os-line text-sm">{{item.text}}</view>
+      </view>
+    </view>
+    <view class="row between mt16">
+      <view class="tag" style="border-color:{{reserve.color}};color:{{reserve.color}}">
+        <text class="dot" style="background:{{reserve.color}}"></text>{{reserve.statusText}}
+      </view>
+      <text class="text-dim text-xs">{{reserve.plate}} · {{reserve.driver}}</text>
+    </view>
+  </view>
+  <view class="empty" wx:else>该批次尚未被物流方承接，暂无可跟踪进度</view>
+</view>

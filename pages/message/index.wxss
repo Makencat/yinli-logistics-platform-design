@@ -1,0 +1,9 @@
+.msg-row { position: relative; padding-left: 40rpx; }
+.msg-dot {
+  position: absolute; left: 22rpx; top: 34rpx;
+  width: 14rpx; height: 14rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #34d399, #22d3ee);
+  box-shadow: 0 0 6rpx rgba(34, 211, 238, 0.8);
+}
+.title-xs { font-size: 26rpx; color: #dae4f5; font-weight: 600; }

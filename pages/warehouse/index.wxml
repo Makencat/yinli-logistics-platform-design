@@ -1,0 +1,90 @@
+<nav-bar title="仓库调度 · 月台看板" show-back="{{true}}"></nav-bar>
+
+<view class="page">
+  <view class="hero">
+    <view class="grid-deco"></view>
+    <view class="row between">
+      <view class="col">
+        <view class="hero-kicker">WAREHOUSE · DOCK OPS</view>
+        <view class="hero-title">仓配调度驾驶舱</view>
+        <view class="hero-sub">审核预约 · 分配月台 · 备货作业</view>
+      </view>
+      <view class="hero-emblem wh-emblem">
+        <image class="icon-lg" src="{{icons.dock[1]}}" mode="aspectFit"/>
+      </view>
+    </view>
+    <view class="row hero-stats">
+      <view class="hero-stat" wx:for="{{head}}" wx:key="k">
+        <view class="stat-num {{item.color}} num">{{item.v}}</view>
+        <view class="stat-k text-sub">{{item.k}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 待审核队列 -->
+  <view class="section-title">提货审核队列</view>
+  <view wx:if="{{pendingList.length === 0}}" class="empty">暂无待审核预约，一切尽在掌控</view>
+  <view
+    wx:for="{{pendingList}}"
+    wx:key="id"
+    class="card clickable"
+    hover-class="role-card-hover"
+    bindtap="goDetail"
+    data-id="{{item.id}}"
+  >
+    <view class="row between">
+      <view class="row gap12 grow">
+        <view class="d-icon di-warn"><image class="icon-sm" src="{{icons.bill[1]}}" mode="aspectFit"/></view>
+        <view class="col grow">
+          <text class="title-sm">{{item.id}} · {{item.product}}</text>
+          <text class="text-dim text-xs mt16 ellip">{{item.plate}} · {{item.driver}} · {{item.phone}}</text>
+        </view>
+      </view>
+      <view class="tag c-warn brd-warn"><text class="dot" style="background:#f59e0b"></text>待审核</view>
+    </view>
+    <view class="row gap24 mt16 d-meta">
+      <text class="d-k">数量 <text class="d-v num">{{item.qtyText}}</text></text>
+      <text class="d-k">预计 <text class="d-v c-cyan">{{item.eta}}</text></text>
+    </view>
+  </view>
+
+  <!-- 月台占用看板 -->
+  <view class="section-title">月台实时占用</view>
+  <view class="dock-grid">
+    <view
+      wx:for="{{dockList}}"
+      wx:key="dock"
+      class="dock-cell {{item.used ? 'dock-used' : ''}}"
+      hover-class="role-card-hover"
+      bindtap="goDetail"
+      data-id="{{item.rid}}"
+    >
+      <view class="dock-name">{{item.dock}}</view>
+      <view class="dock-status" style="color:{{item.color}}">
+        {{item.used ? item.busy : '空闲'}}
+      </view>
+      <view class="dock-light" style="background:{{item.color}};box-shadow:0 0 6rpx {{item.color}}"></view>
+    </view>
+  </view>
+
+  <!-- 今日到厂时间轴 -->
+  <view class="section-title">今日到厂排程</view>
+  <view class="card plain">
+    <view class="timeline">
+      <view wx:for="{{timeline}}" wx:key="id" class="tl-item">
+        <view class="tl-dot" style="background:rgba(77,141,255,.2);border-color:{{item.color}};box-shadow:0 0 6rpx {{item.color}}"></view>
+        <view class="row between">
+          <view class="col grow">
+            <text class="text-sm ellip">{{item.product}} · {{item.qtyText}}</text>
+            <text class="text-dim text-xs mt8 ellip">{{item.plate}} · {{item.id}}</text>
+          </view>
+          <view class="col" style="align-items:flex-end">
+            <text class="num c-cyan" style="font-size:30rpx">{{item.eta}}</text>
+            <text class="text-dim text-xs mt8">{{item.statusText}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{timeline.length === 0}}" class="empty">今日暂无在途车辆排程</view>
+  </view>
+</view>

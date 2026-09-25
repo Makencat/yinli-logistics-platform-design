@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/role/index",
+    "pages/auth/index",
+    "pages/client/index",
+    "pages/client/track",
+    "pages/staff/index",
+    "pages/staff/detail",
+    "pages/factory/index",
+    "pages/factory/create",
+    "pages/factory/detail",
+    "pages/logistics/index",
+    "pages/logistics/detail",
+    "pages/logistics/vehicles",
+    "pages/warehouse/index",
+    "pages/warehouse/detail",
+    "pages/customer/index",
+    "pages/customer/detail",
+    "pages/message/index",
+    "pages/dashboard/index"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#0a0f1e",
+    "backgroundColorTop": "#0a0f1e",
+    "backgroundColorBottom": "#0a0f1e"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

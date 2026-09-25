@@ -1,0 +1,71 @@
+<nav-bar title="预约审核 · 仓配作业" show-back="{{true}}"></nav-bar>
+
+<view class="page" wx:if="{{reserve}}">
+  <view class="state-banner state-{{reserve.status === 'done' ? 'done' : reserve.status === 'pending' ? 'warn' : 'reserved'}}">
+    <view class="scanline" wx:if="{{reserve.status === 'loading'}}"></view>
+    <view class="row between">
+      <view class="col">
+        <view class="sb-kicker">{{reserve.id}} · {{reserve.eta}}</view>
+        <view class="sb-title">{{reserve.statusText}}</view>
+        <view class="sb-sub" wx:if="{{reserve.dock}}">月台 {{reserve.dock}}</view>
+      </view>
+      <view class="sb-icon">
+        <image class="icon-lg" src="{{reserve.status === 'done' ? icons.check[1] : reserve.status === 'pending' ? icons.clock[1] : icons.dock[1]}}" mode="aspectFit"/>
+      </view>
+    </view>
+  </view>
+
+  <!-- 预约与货物信息 -->
+  <view class="card">
+    <view class="card-head row between">
+      <text class="title-md">预约信息</text>
+      <text class="text-dim text-xs">{{reserve.statusText}}</text>
+    </view>
+    <view class="row gap12 mt16">
+      <view class="plate-chip"><text class="plate-text">{{reserve.plate}}</text></view>
+      <view class="col">
+        <text class="title-sm">{{reserve.driver}}</text>
+        <text class="text-dim text-xs mt16">{{reserve.phone}}</text>
+      </view>
+    </view>
+    <view class="divider" wx:if="{{demand}}"></view>
+    <view class="row between" wx:if="{{demand}}">
+      <view class="col">
+        <text class="title-sm">{{demand.product}}</text>
+        <text class="text-dim text-xs mt16">{{demand.category}} · 批次 {{demand.lot}} · 需求 {{demand.id}}</text>
+      </view>
+      <view class="num c-cyan" style="font-size:38rpx">{{demand.qtyText}}</view>
+    </view>
+  </view>
+
+  <!-- 审核分配月台 -->
+  <view class="card plain" wx:if="{{canApprove}}">
+    <view class="f-item">
+      <view class="f-label">分配装卸月台</view>
+      <picker range="{{dockList}}" value="{{dockIdx}}" bindchange="onDock">
+        <view class="f-picker-v">
+          <text>{{dockList[dockIdx]}}</text>
+          <image class="icon-sm" src="{{icons.chevron_right[0]}}" mode="aspectFit"/>
+        </view>
+      </picker>
+    </view>
+    <button class="btn primary block" hover-class="button-hover" bindtap="approve">审核通过 · 分配月台</button>
+  </view>
+
+  <!-- 操作区 -->
+  <button wx:if="{{canStart}}" class="btn primary block" hover-class="button-hover" bindtap="startLoading">开始备货</button>
+  <button wx:if="{{canFinish}}" class="btn primary block" hover-class="button-hover" bindtap="finishLoading">完成备货</button>
+  <button wx:if="{{canDone}}" class="btn primary block" hover-class="button-hover" bindtap="confirmDone">确认装货提货 · 离场</button>
+
+  <!-- 时间线 -->
+  <view class="section-title">作业时间线</view>
+  <view class="card plain">
+    <view class="timeline">
+      <view wx:for="{{reserve.track}}" wx:key="time" class="tl-item done">
+        <view class="tl-dot"></view>
+        <text class="tl-line text-sm">{{item.text}}</text>
+        <text class="text-dim text-xs mt8">{{item.time}}</text>
+      </view>
+    </view>
+  </view>
+</view>

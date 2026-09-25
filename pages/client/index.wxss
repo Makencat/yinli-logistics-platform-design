@@ -1,0 +1,26 @@
+.menu-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+.menu-card {
+  width: calc(50% - 10rpx);
+  box-sizing: border-box;
+  position: relative;
+  padding: 26rpx 24rpx 24rpx;
+  border-radius: 26rpx;
+  background: linear-gradient(160deg, rgba(24, 34, 58, 0.97), rgba(15, 22, 40, 0.99));
+  border: 1px solid rgba(133, 168, 226, 0.30);
+  box-shadow: 0 4rpx 12rpx rgba(2, 6, 16, 0.38);
+  display: flex;
+  flex-direction: column;
+}
+.mc-emblem {
+  width: 84rpx; height: 84rpx;
+  border-radius: 24rpx;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18rpx;
+}
+.mc-badge { position: absolute; top: 20rpx; right: 20rpx; }
+.mc-n { font-size: 28rpx; font-weight: 700; color: #eaf2ff; letter-spacing: 1rpx; }
+.mc-d { font-size: 23rpx; color: #9db1cd; margin-top: 10rpx; line-height: 1.55; }

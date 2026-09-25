@@ -1,0 +1,65 @@
+.hero-emblem {
+  width: 128rpx; height: 128rpx;
+  border-radius: 34rpx;
+  background: rgba(34, 211, 238, 0.12);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+  box-shadow: 0 0 6rpx rgba(34, 211, 238, 0.2);
+  margin-right: 10rpx;
+  position: relative;
+}
+.lg-tip {
+  position: absolute; bottom: -8rpx;
+  font-size: 23rpx; color: #22d3ee;
+  background: rgba(10, 15, 30, 0.8);
+  padding: 2rpx 12rpx;
+  border-radius: 999rpx;
+  white-space: nowrap;
+}
+
+.tabs {
+  display: flex;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 22rpx;
+  padding: 8rpx;
+  margin: 26rpx 0 24rpx;
+}
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 16rpx 0;
+  border-radius: 16rpx;
+  font-size: 26rpx;
+  color: #a8bad6;
+  position: relative;
+}
+.tab-on {
+  background: linear-gradient(135deg, rgba(47, 107, 255, 0.5), rgba(34, 211, 238, 0.4));
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 4rpx 8rpx rgba(47, 107, 255, 0.3);
+}
+.tab-badge {
+  position: absolute; top: 8rpx; right: 26rpx;
+  min-width: 28rpx; height: 28rpx; padding: 0 6rpx;
+  border-radius: 999rpx;
+  background: linear-gradient(135deg, #f59e0b, #f87171);
+  color: #0a0f1e;
+  font-size: 23rpx; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.d-icon {
+  width: 68rpx; height: 68rpx;
+  border-radius: 20rpx;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.di-warn  { background: rgba(245, 158, 11, 0.14); border: 1px solid rgba(245, 158, 11, 0.4); }
+.di-cyan  { background: rgba(34, 211, 238, 0.14); border: 1px solid rgba(34, 211, 238, 0.4); }
+.di-green { background: rgba(52, 211, 153, 0.14); border: 1px solid rgba(52, 211, 153, 0.4); }
+.d-meta { flex-wrap: wrap; }
+.d-k { font-size: 24rpx; color: #93a7c4; }
+.d-v { color: #dbe6f7; font-weight: 500; }

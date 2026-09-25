@@ -1,0 +1,66 @@
+<nav-bar title="员工工作台"></nav-bar>
+
+<view class="page has-bar">
+  <view class="hero">
+    <view class="grid-deco"></view>
+    <view class="row between">
+      <view class="col grow">
+        <view class="hero-kicker">STAFF CONSOLE</view>
+        <view class="hero-title">{{session.name}}</view>
+        <view class="hero-sub">账号 {{session.account}} · {{session.title}} · 已登录</view>
+      </view>
+      <view class="glow-b lg-emblem">
+        <image class="icon-lg" src="{{iconUser}}" mode="aspectFit"/>
+      </view>
+    </view>
+    <view class="hero-stats row">
+      <view class="hero-stat">
+        <view class="stat-num c-cyan num">{{clients.length}}</view>
+        <view class="stat-k text-sub">客户账户</view>
+      </view>
+      <view class="hero-stat">
+        <view class="stat-num c-blue num">{{totalActive}}</view>
+        <view class="stat-k text-sub">在途货物</view>
+      </view>
+      <view class="hero-stat">
+        <view class="stat-num c-green num">{{totalDelivered}}</view>
+        <view class="stat-k text-sub">已送达</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section-title">客户账户列表</view>
+  <view
+    class="client-bar"
+    wx:for="{{clients}}"
+    wx:key="id"
+    data-id="{{item.id}}"
+    bindtap="goDetail"
+    hover-class="role-card-hover"
+  >
+    <view class="cb-emblem glow-b">
+      <image class="icon-sm" src="{{iconUser}}" mode="aspectFit"/>
+    </view>
+    <view class="col grow">
+      <view class="row gap12">
+        <text class="cb-name ellip">{{item.name}}</text>
+        <view class="badge" wx:if="{{item.unread}}">{{item.unread}}</view>
+      </view>
+      <text class="text-dim text-xs mt8 ellip">账号 {{item.account}} · {{item.contact}} {{item.phone}}</text>
+      <text class="cb-sum mt8 clamp2">{{item.summary}}</text>
+    </view>
+    <view class="col cb-right">
+      <text class="cb-count num c-cyan">{{item.count}}</text>
+      <text class="text-dim text-xs">单</text>
+      <text class="cb-go c-cyan">→</text>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{!clients.length}}">暂无客户账户</view>
+
+  <view class="btn soft block mt28" hover-class="button-hover" bindtap="logout">退出登录</view>
+</view>
+
+<view class="fixed-bar">
+  <view class="btn primary block" hover-class="button-hover" bindtap="notifyAll">一键通知客户</view>
+</view>

@@ -1,0 +1,38 @@
+.client-bar {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  padding: 28rpx 24rpx;
+  border-radius: 24rpx;
+  background: linear-gradient(110deg, rgba(24, 34, 58, 0.94), rgba(15, 22, 40, 0.98));
+  border: 1px solid rgba(133, 168, 226, 0.16);
+  box-shadow: 0 4rpx 12rpx rgba(2, 6, 16, 0.36);
+  margin-bottom: 18rpx;
+  position: relative;
+  overflow: hidden;
+}
+.client-bar::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 5rpx;
+  background: linear-gradient(180deg, #2f6bff, #22d3ee);
+  opacity: 0.8;
+}
+
+.cb-emblem {
+  width: 76rpx; height: 76rpx;
+  border-radius: 22rpx;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.cb-name { font-size: 29rpx; font-weight: 700; color: #eaf2ff; }
+.cb-sum { font-size: 23rpx; color: #7dd3fc; }
+.cb-right { align-items: center; gap: 2rpx; flex-shrink: 0; width: 90rpx; }
+.cb-count { font-size: 34rpx; font-weight: 800; line-height: 1.1; }
+.cb-go { font-size: 26rpx; margin-top: 6rpx; }
+
+/* ===== v9 列表可读性 ===== */
+.client-bar { transition: transform 130ms ease, border-color 160ms ease; }
+.client-bar { border-color: rgba(133, 168, 226, 0.28); }
+.cb-name { max-width: 300rpx; }
+.cb-sum { line-height: 1.6; }

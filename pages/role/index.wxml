@@ -1,0 +1,59 @@
+<nav-bar title="驾驶舱 · 角色登录" show-back="{{true}}"></nav-bar>
+
+<view class="page">
+  <view class="hero role-hero">
+    <view class="grid-deco"></view>
+    <view class="row between">
+      <view class="col grow">
+        <view class="hero-kicker">MERIDIAN · ACCESS GATE</view>
+        <view class="hero-title">选择登录角色</view>
+        <view class="hero-sub">客户全程可视 · 员工一键调度</view>
+      </view>
+      <view class="radar-ring"><view class="radar-core"></view></view>
+    </view>
+  </view>
+
+  <!-- 已登录会话 -->
+  <view wx:if="{{session}}" class="card session-card">
+    <view class="session-avatar"><view class="session-dot pulse"></view></view>
+    <view class="col grow">
+      <text class="text-sm">{{session.name}}</text>
+      <text class="text-dim text-xs mt8">{{session.role === 'staff' ? '员工会话' : '客户会话'}} · {{session.loginAt}} 登录</text>
+    </view>
+    <view class="row gap12">
+      <view class="btn sm ghost" hover-class="button-hover" bindtap="goWorkbench">进入</view>
+      <view class="btn sm soft" hover-class="button-hover" bindtap="logout">退出</view>
+    </view>
+  </view>
+
+  <!-- 角色入口 -->
+  <view class="role-list">
+    <view
+      class="role-big"
+      wx:for="{{roles}}"
+      wx:key="key"
+      data-role="{{item.key}}"
+      bindtap="goAuth"
+      hover-class="role-card-hover"
+    >
+      <view class="rb-emblem {{item.glow}}">
+        <image class="icon-lg" src="{{item.icon}}" mode="aspectFit"/>
+      </view>
+      <view class="col grow">
+        <view class="row gap12">
+          <text class="rb-name">{{item.n}}</text>
+          <text class="rb-en">{{item.en}}</text>
+        </view>
+        <text class="text-sub text-sm mt8 clamp2">{{item.d}}</text>
+        <text class="text-dim text-xs mt8 ellip">{{item.tip}}</text>
+      </view>
+      <text class="q-go c-cyan">→</text>
+    </view>
+  </view>
+
+  <view class="tip-box">
+    客户端登录后可在「运输状态预览」查看货物当前所处仓库、师傅是否已装车 / 已出发、车辆司机信息与完整进度时间轴；员工端登录后可查看全部客户账户，并调整分配仓库、指派运输师傅。
+  </view>
+
+  <view class="btn soft block mt24" hover-class="button-hover" bindtap="goHome">返回首页</view>
+</view>

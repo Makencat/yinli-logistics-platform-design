@@ -1,0 +1,94 @@
+<nav-bar title="运输状态预览" show-back="{{true}}"></nav-bar>
+
+<view class="page">
+  <view class="hero">
+    <view class="grid-deco"></view>
+    <view class="row between">
+      <view class="col grow">
+        <view class="hero-kicker">SHIPMENT TRACKING</view>
+        <view class="hero-title">货物运输状态</view>
+        <view class="hero-sub">{{client.name}} · 共 {{ships.length}} 单在册</view>
+      </view>
+      <view class="glow-g lg-emblem">
+        <image class="icon-lg" src="{{iconBox}}" mode="aspectFit"/>
+      </view>
+    </view>
+  </view>
+
+  <view
+    class="card plain ship-card"
+    wx:for="{{ships}}"
+    wx:key="id"
+    data-id="{{item.id}}"
+    bindtap="toggle"
+    hover-class="card-hover"
+  >
+    <view class="row between">
+      <view class="col grow">
+        <text class="text-sm ellip">{{item.product}}</text>
+        <text class="text-dim text-xs mt8">{{item.orderNo}} · 批次 {{item.lot}} · {{item.qty}}{{item.unit}}</text>
+      </view>
+      <view class="state-pill" style="color:{{item.stageColor}};background:{{item.stageColor}}1f;border:1px solid {{item.stageColor}}66;">{{item.stageText}}</view>
+    </view>
+
+    <view class="chip-row">
+      <view class="chip {{item.loaded ? 'on' : ''}}">师傅{{item.loaded ? '已装车' : '未装车'}}</view>
+      <view class="chip {{item.departed ? 'on' : ''}}">车辆{{item.departed ? '已出发' : '未出发'}}</view>
+      <view class="chip {{item.arrived ? 'on' : 'warn'}}">{{item.arrived ? '已送达' : '运输中'}}</view>
+    </view>
+
+    <view class="meter mt16"><view style="width:{{item.progress}}%"></view></view>
+
+    <view class="kv-grid">
+      <view class="kv full">
+        <view class="kv-k">当前仓库 / 位置</view>
+        <view class="kv-v">{{item.warehouseName}}</view>
+        <view class="kv-addr clamp2">{{item.warehouseAddr}}</view>
+      </view>
+      <view class="kv">
+        <view class="kv-k">运输师傅</view>
+        <view class="kv-v">{{item.driverName}}</view>
+      </view>
+      <view class="kv">
+        <view class="kv-k">车牌号</view>
+        <view class="kv-v">{{item.plate}}</view>
+      </view>
+      <view class="kv">
+        <view class="kv-k">车型</view>
+        <view class="kv-v kv-sm">{{item.vehicleType}}</view>
+      </view>
+      <view class="kv">
+        <view class="kv-k">司机联系方式</view>
+        <view class="kv-v kv-sm">{{item.driverPhone}}</view>
+      </view>
+      <view class="kv full">
+        <view class="kv-k">预计 / 备注</view>
+        <view class="kv-v kv-sm">{{item.etaText}}</view>
+      </view>
+    </view>
+
+    <block wx:if="{{expanded === item.id}}">
+      <view class="divider mt24"></view>
+      <view class="axis-title">完整进度时间轴</view>
+      <view class="stage-axis">
+        <view class="stage-node {{node.state}}" wx:for="{{item.stages}}" wx:for-item="node" wx:key="key">
+          <view class="sl"></view>
+          <view class="sd"></view>
+          <view class="st">{{node.text}}</view>
+        </view>
+      </view>
+
+      <view class="axis-title mt28">运输流水</view>
+      <view class="timeline">
+        <view class="tl-item done" wx:for="{{item.timeline}}" wx:for-item="log" wx:key="text">
+          <view class="tl-dot"></view>
+          <text class="text-sm">{{log.text}}</text>
+          <text class="text-dim text-xs mt4">{{log.time}}</text>
+        </view>
+      </view>
+    </block>
+    <view wx:else class="expand-hint">点击查看完整进度时间轴</view>
+  </view>
+
+  <view class="empty" wx:if="{{!ships.length}}">暂无运输单，请联系调度中心</view>
+</view>

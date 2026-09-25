@@ -1,0 +1,81 @@
+<nav-bar title="生产厂家 · 需求中枢" show-back="{{true}}">
+</nav-bar>
+
+<view class="page">
+  <view class="hero">
+    <view class="grid-deco"></view>
+    <view class="row between">
+      <view class="col">
+        <view class="hero-kicker">FACTORY · DEMAND DESK</view>
+        <view class="hero-title">提货需求单</view>
+        <view class="hero-sub">向物流 / 仓库发起协同提货</view>
+      </view>
+      <view class="hero-emblem">
+        <image class="icon-lg" src="{{icons.factory[1]}}" mode="aspectFit"/>
+      </view>
+    </view>
+    <view class="row hero-stats">
+      <view class="hero-stat" wx:for="{{head}}" wx:key="k">
+        <view class="stat-num {{item.color}} num">{{item.v}}</view>
+        <view class="stat-k text-sub">{{item.k}}</view>
+      </view>
+    </view>
+  </view>
+
+  <button class="btn primary block" hover-class="button-hover" bindtap="goCreate">
+    新建提货需求单
+  </button>
+
+  <view class="tabs">
+    <view
+      wx:for="{{tabs}}"
+      wx:key="k"
+      class="tab {{activeTab === item.k ? 'tab-on' : ''}}" hover-class="tap-hover"
+      bindtap="onTapTab"
+      data-k="{{item.k}}"
+    >{{item.t}}</view>
+  </view>
+
+  <view wx:if="{{shown.length === 0}}" class="empty">暂无该状态的需求单</view>
+
+  <view
+    wx:for="{{shown}}"
+    wx:key="id"
+    class="card clickable"
+    hover-class="role-card-hover"
+    bindtap="goDetail"
+    data-id="{{item.id}}"
+  >
+    <view class="row between">
+      <view class="row gap12 grow">
+        <view class="d-icon {{item.status === 'pending' ? 'di-warn' : item.status === 'reserved' ? 'di-cyan' : 'di-green'}}">
+          <image class="icon-sm" src="{{item.status === 'pending' ? icons.flag[0] : item.status === 'reserved' ? icons.route[0] : icons.check[0]}}" mode="aspectFit"/>
+        </view>
+        <view class="col grow">
+          <view class="row gap12">
+            <text class="title-sm">{{item.product}}</text>
+            <view wx:if="{{item.urgent}}" class="tag c-red brd-red"><text>紧急</text></view>
+          </view>
+          <view class="row gap16 mt16" wx:if="{{false}}"></view>
+        </view>
+      </view>
+      <view class="tag {{item.status === 'pending' ? 'c-warn brd-warn' : item.status === 'reserved' ? 'c-cyan brd-cyan' : 'c-green brd-green'}}">
+        <text class="dot" style="background:{{item.statusColor}}"></text>{{item.statusText}}
+      </view>
+    </view>
+
+    <view class="row gap24 mt16 d-meta">
+      <text class="d-k">数量 <text class="d-v num">{{item.qty}}{{item.unit}}</text></text>
+      <text class="d-k">批次 <text class="d-v">{{item.lot}}</text></text>
+      <text class="d-k">客户 <text class="d-v">{{item.customer}}</text></text>
+    </view>
+    <view class="row between mt16">
+      <text class="text-dim text-xs">{{item.createTime}}</text>
+      <view class="row gap8">
+        <text class="d-k">期望时段</text>
+        <text class="d-v c-cyan">{{item.window}}</text>
+        <image class="chev" src="{{icons.chevron_right[0]}}" mode="aspectFit"/>
+      </view>
+    </view>
+  </view>
+</view>

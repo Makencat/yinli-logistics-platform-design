@@ -1,0 +1,115 @@
+<nav-bar title="{{mode === 'create' ? '承接货源 · 提交预约' : '提货预约管理'}}" show-back="{{true}}"></nav-bar>
+
+<view class="page">
+  <!-- ===== 承接模式（创建预约） ===== -->
+  <block wx:if="{{mode === 'create' && demand}}">
+    <view class="card">
+      <view class="card-head row between">
+        <text class="title-md">货源信息</text>
+        <view class="tag c-warn brd-warn"><text class="dot" style="background:#f59e0b"></text>待承接</view>
+      </view>
+      <view class="row gap12 mt16">
+        <view class="d-icon di-warn"><image class="icon-sm" src="{{icons.flag[1]}}" mode="aspectFit"/></view>
+        <view class="col grow">
+          <text class="title-sm">{{demand.product}}</text>
+          <text class="text-dim text-xs mt16">{{demand.category}} · 批次 {{demand.lot}} · 客户 {{demand.customer}}</text>
+        </view>
+      </view>
+      <view class="row gap24 mt16 d-meta">
+        <text class="d-k">数量 <text class="d-v num">{{demand.qtyText}}</text></text>
+        <text class="d-k">需求 {{demand.id}}</text>
+      </view>
+    </view>
+
+    <view class="card plain form-card">
+      <view class="f-item">
+        <view class="f-label">选择运输车辆 <text class="req">*</text></view>
+        <picker range="{{vehicles}}" range-key="plate" value="{{vehicleIdx}}" bindchange="onPickVehicle" wx:if="{{vehicles.length}}">
+          <view class="f-picker-v">
+            <text>{{vehicles[vehicleIdx].plate}} · {{vehicles[vehicleIdx].driver}}</text>
+            <image class="icon-sm" src="{{icons.chevron_right[0]}}" mode="aspectFit"/>
+          </view>
+        </picker>
+        <view wx:else class="f-picker-v" hover-class="tap-hover" bindtap="goVehicles">
+          <text class="ph">暂无车辆，点击登记</text>
+          <image class="icon-sm" src="{{icons.chevron_right[0]}}" mode="aspectFit"/>
+        </view>
+      </view>
+      <view class="f-row">
+        <view class="f-item grow">
+          <view class="f-label">司机</view>
+          <view class="f-static">{{vehicles[vehicleIdx].driver || '—'}}</view>
+        </view>
+        <view class="f-item grow">
+          <view class="f-label">联系电话</view>
+          <view class="f-static">{{vehicles[vehicleIdx].phone || '—'}}</view>
+        </view>
+      </view>
+      <view class="f-item">
+        <view class="f-label">预计到达时段</view>
+        <picker range="{{windows}}" value="{{winIdx}}" bindchange="onWin">
+          <view class="f-picker-v">
+            <text>{{windows[winIdx]}}</text>
+            <image class="icon-sm" src="{{icons.chevron_right[0]}}" mode="aspectFit"/>
+          </view>
+        </picker>
+      </view>
+      <view class="f-item">
+        <view class="f-label">承运数量</view>
+        <view class="f-static">{{demand.qtyText}}</view>
+      </view>
+    </view>
+
+    <button class="btn primary block" hover-class="button-hover" bindtap="submitReserve">提交提货预约</button>
+  </block>
+
+  <!-- ===== 管理模式（已有预约） ===== -->
+  <block wx:if="{{mode === 'manage' && reserve}}">
+    <view class="state-banner state-{{reserve.status === 'done' ? 'done' : 'reserved'}}">
+      <view class="scanline" wx:if="{{reserve.status === 'loading'}}"></view>
+      <view class="row between">
+        <view class="col">
+          <view class="sb-kicker">{{reserve.id}}</view>
+          <view class="sb-title">{{reserve.statusText}}</view>
+          <view class="sb-sub">{{reserve.plate}} · {{reserve.driver}} · {{reserve.phone}}</view>
+        </view>
+        <view class="sb-icon">
+          <image class="icon-lg" src="{{reserve.status === 'done' ? icons.check[1] : icons.truck[1]}}" mode="aspectFit"/>
+        </view>
+      </view>
+      <view class="row between mt24" wx:if="{{reserve.dock}}">
+        <view class="pill" style="background:rgba(34,211,238,.16);border:1px solid rgba(34,211,238,.4)">月台 {{reserve.dock}}</view>
+        <view class="pill" style="background:rgba(77,141,255,.14);border:1px solid rgba(77,141,255,.4)">预计 {{reserve.eta}}</view>
+      </view>
+    </view>
+
+    <view class="card" wx:if="{{demand}}">
+      <view class="card-head row between">
+        <text class="title-md">承运货物</text>
+        <text class="text-dim text-xs">需求 {{demand.id}}</text>
+      </view>
+      <view class="row between mt16">
+        <view class="col">
+          <text class="title-sm">{{demand.product}}</text>
+          <text class="text-dim text-xs mt16">{{demand.category}} · 批次 {{demand.lot}}</text>
+        </view>
+        <view class="num c-cyan" style="font-size:36rpx">{{demand.qtyText}}</view>
+      </view>
+    </view>
+
+    <view class="section-title">到厂时间线</view>
+    <view class="card plain">
+      <view class="timeline">
+        <view wx:for="{{reserve.track}}" wx:key="time" class="tl-item done">
+          <view class="tl-dot"></view>
+          <text class="tl-line text-sm">{{item.text}}</text>
+          <text class="text-dim text-xs mt8">{{item.time}}</text>
+        </view>
+      </view>
+    </view>
+
+    <button wx:if="{{canResched}}" class="btn ghost block" hover-class="button-hover" bindtap="resched">调整预计到达</button>
+    <button wx:if="{{canSign}}" class="btn primary block mt16" hover-class="button-hover" bindtap="signIn">车辆到厂 · 签到提货</button>
+    <button wx:if="{{canCancel}}" class="btn danger block mt16" hover-class="button-hover" bindtap="cancelReserve">取消预约</button>
+  </block>
+</view>

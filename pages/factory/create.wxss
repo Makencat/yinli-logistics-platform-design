@@ -1,0 +1,60 @@
+.form-card { padding: 34rpx 30rpx; }
+.f-item { margin-bottom: 30rpx; }
+.f-row { display: flex; gap: 24rpx; }
+.f-label {
+  font-size: 24rpx; color: #a8bad6;
+  margin-bottom: 12rpx;
+}
+.req { color: #f87171; }
+.f-input, .f-area {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  border-radius: 18rpx;
+  padding: 0 24rpx;
+  height: 84rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  width: 100%;
+}
+.f-area {
+  height: 150rpx;
+  padding: 20rpx 24rpx;
+  line-height: 1.5;
+}
+.ph { color: #7e91b4; }
+.f-picker {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  border-radius: 18rpx;
+  height: 84rpx;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+  display: flex;
+}
+.f-picker-v {
+  flex: 1; display: flex; align-items: center; justify-content: space-between;
+  font-size: 28rpx;
+}
+.f-picker-v image { transform: rotate(90deg); opacity: 0.6; }
+
+/* 开关 */
+.f-toggle {
+  width: 96rpx; height: 56rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 6rpx;
+  box-sizing: border-box;
+  transition: all 0.25s;
+}
+.f-toggle.on {
+  background: linear-gradient(135deg, rgba(248, 113, 113, 0.5), rgba(245, 158, 11, 0.5));
+  border-color: rgba(248, 113, 113, 0.5);
+}
+.toggle-thumb {
+  width: 44rpx; height: 44rpx;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.25s;
+}
+.f-toggle.on .toggle-thumb { transform: translateX(40rpx); }

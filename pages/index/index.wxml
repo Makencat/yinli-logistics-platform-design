@@ -1,0 +1,76 @@
+<view class="page home">
+  <view class="masthead">
+    <view class="grid-deco"></view>
+    <view class="mast-brand">
+      <view class="brand-chip">
+        <view class="brand-logo"><view class="ic ic-logo"></view></view>
+        <view class="col">
+          <text class="brand-name">MERIDIAN</text>
+          <text class="brand-sub">仓储 — 配送一体化协同平台</text>
+        </view>
+      </view>
+      <view class="demo-chip" hover-class="tap-hover" bindtap="goDashboard">
+        <view class="demo-dot"></view>
+        <text>{{todayText}} · DEMO</text>
+      </view>
+    </view>
+
+    <view class="hero-wrap">
+      <view class="hero-title">提货预约协同蓝图</view>
+      <view class="hero-sub">客户端全程可视 · 员工端一键调度 · 跑通全链路提货协同</view>
+      <view class="flow-strip">
+        <view class="flow-item" wx:for="{{flowSteps}}" wx:key="*this">
+          <text wx:if="{{index !== 0}}" class="flow-link">→</text>
+          <text class="flow-tag">{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="mast-stats">
+      <view class="mast-stat">
+        <view class="stat-num c-cyan num">{{reservedCount}}</view>
+        <view class="stat-k text-sub">已协同批次</view>
+      </view>
+      <view class="mast-line"></view>
+      <view class="mast-stat">
+        <view class="stat-num c-blue num">{{activeCount}}</view>
+        <view class="stat-k text-sub">在库在途</view>
+      </view>
+      <view class="mast-line"></view>
+      <view class="mast-stat">
+        <view class="stat-num c-green num">{{doneCount}}</view>
+        <view class="stat-k text-sub">闭环完成</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="quick-row">
+    <view class="quick-card" bindtap="goDashboard" hover-class="role-card-hover">
+      <view class="quick-emblem qe-blue"><view class="ic ic-dashboard"></view></view>
+      <view class="col q-body">
+        <text class="q-title">驾驶舱</text>
+        <text class="q-sub">客户 / 员工 双端登录</text>
+      </view>
+      <text class="q-go c-cyan">→</text>
+    </view>
+    <view class="quick-card" bindtap="goMessages" hover-class="role-card-hover">
+      <view class="quick-emblem qe-cyan"><view class="ic ic-message"></view></view>
+      <view class="col q-body">
+        <text class="q-title">消息中心</text>
+        <text class="q-sub">待办提示 · 站内通知</text>
+      </view>
+      <view class="msg-badge" wx:if="{{unread}}">{{unread}}</view>
+    </view>
+  </view>
+
+  <view class="section-title">协同链路</view>
+  <view class="card plain chain-card">
+    <view wx:for="{{chain}}" wx:key="*this" class="chain-row">
+      <view class="chain-index num c-cyan">{{index + 1}}</view>
+      <view class="col">
+        <text class="text-sm">{{item.t}}</text>
+        <text class="text-dim text-xs mt8">{{item.d}}</text>
+      </view>
+    </view>
+  </view>
+</view>

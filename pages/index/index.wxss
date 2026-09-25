@@ -1,0 +1,275 @@
+.home {
+  background-image:
+    radial-gradient(1100rpx 900rpx at 90% -10%, rgba(47, 107, 255, 0.14), transparent 60%),
+    radial-gradient(900rpx 700rpx at -20% 30%, rgba(34, 211, 238, 0.07), transparent 60%);
+}
+
+/* ============ 顶部品牌区（去拥挤化：分区分层 + 留白节奏） ============ */
+.masthead {
+  border-radius: 34rpx;
+  padding: 34rpx 32rpx 30rpx;
+  margin-bottom: 30rpx;
+  background: linear-gradient(150deg, rgba(15, 26, 56, 0.95), rgba(8, 13, 26, 0.9));
+  border: 1px solid rgba(77, 141, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+.mast-brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+.brand-chip { display: flex; align-items: center; gap: 20rpx; }
+.brand-logo {
+  width: 88rpx; height: 88rpx;
+  border-radius: 26rpx;
+  background: linear-gradient(135deg, #2f6bff, #22d3ee);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4rpx 10rpx rgba(47, 107, 255, 0.55), inset 0 1px 0 rgba(255,255,255,0.25);
+}
+.brand-name {
+  font-family: 'Bahnschrift', 'Arial', sans-serif;
+  font-size: 33rpx; font-weight: 800;
+  letter-spacing: 6rpx;
+  color: #eaf2ff;
+}
+.brand-sub { font-size: 23rpx; color: #a8bad6; margin-top: 6rpx; letter-spacing: 1rpx; }
+.demo-chip {
+  display: flex; align-items: center; gap: 10rpx;
+  background: rgba(34, 211, 238, 0.12);
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  padding: 10rpx 18rpx;
+  border-radius: 999rpx;
+  font-size: 23rpx;
+  color: #22d3ee;
+  flex-shrink: 0;
+}
+.demo-dot {
+  width: 12rpx; height: 12rpx;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 6rpx rgba(52, 211, 153, 0.9);
+  animation: pulse 1.4s infinite;
+}
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.35; }
+  100% { opacity: 1; }
+}
+
+/* 标题区：与品牌区留出清晰间隔，独立成层 */
+.hero-wrap {
+  margin-top: 36rpx;
+  padding-top: 30rpx;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+.hero-title {
+  font-size: 42rpx; font-weight: 800;
+  color: #eaf2ff;
+  letter-spacing: 1rpx;
+  line-height: 1.3;
+}
+.hero-sub { font-size: 24rpx; color: #a8bad6; margin-top: 14rpx; letter-spacing: 1rpx; }
+
+.flow-strip {
+  display: flex; align-items: center; flex-wrap: wrap;
+  margin-top: 28rpx;
+  row-gap: 14rpx;
+}
+.flow-item { display: flex; align-items: center; }
+.flow-tag {
+  font-size: 23rpx;
+  color: #9fb6d8;
+  background: rgba(77, 141, 255, 0.16);
+  border: 1px solid rgba(77, 141, 255, 0.35);
+  padding: 10rpx 16rpx;
+  border-radius: 999rpx;
+}
+.flow-link { color: #22d3ee; margin: 0 12rpx; font-size: 24rpx; }
+
+.mast-stats {
+  display: flex;
+  align-items: center;
+  margin-top: 34rpx;
+  padding: 28rpx 8rpx 4rpx;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+.mast-stat { flex: 1; text-align: center; display: flex; flex-direction: column; gap: 8rpx; }
+.stat-num { font-size: 42rpx; line-height: 1.1; }
+.stat-k { font-size: 23rpx; letter-spacing: 1rpx; }
+.mast-line {
+  width: 1px; height: 46rpx;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+}
+
+/* ============ 驾驶舱 / 消息中心 快捷入口（渐变 + 发光 + 专属图标底板） ============ */
+.quick-row { display: flex; gap: 20rpx; margin-bottom: 32rpx; }
+.quick-card {
+  flex: 1;
+  display: flex; align-items: center; gap: 18rpx;
+  padding: 24rpx 22rpx;
+  border-radius: 26rpx;
+  background: linear-gradient(160deg, rgba(30, 44, 76, 0.9), rgba(16, 24, 44, 0.95));
+  border: 1px solid rgba(133, 168, 226, 0.36);
+  box-shadow: 0 4rpx 12rpx rgba(2, 6, 16, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  position: relative;
+  overflow: visible;
+}
+.quick-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 24rpx; right: 24rpx;
+  height: 1px;
+  border-radius: 2rpx;
+  background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.5), transparent);
+  opacity: 0.6;
+}
+.quick-bar { flex: 1.3; }
+.quick-emblem {
+  width: 76rpx; height: 76rpx;
+  border-radius: 22rpx;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.qe-blue {
+  background: linear-gradient(145deg, rgba(47, 107, 255, 0.28), rgba(47, 107, 255, 0.1));
+  border: 1px solid rgba(77, 141, 255, 0.55);
+  box-shadow: 0 0 6rpx rgba(47, 107, 255, 0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+.qe-cyan {
+  background: linear-gradient(145deg, rgba(34, 211, 238, 0.24), rgba(34, 211, 238, 0.08));
+  border: 1px solid rgba(34, 211, 238, 0.55);
+  box-shadow: 0 0 6rpx rgba(34, 211, 238, 0.35), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+/* v5: 图标改为 <view>+CSS 背景，见文件末尾 .ic 定义 */
+.q-body { flex: 1; min-width: 0; gap: 4rpx; }
+.q-title { font-size: 30rpx; font-weight: 700; color: #eaf2ff; letter-spacing: 1rpx; }
+.q-sub { font-size: 23rpx; color: #9db1cd; letter-spacing: 0.5rpx; }
+.q-go { font-size: 30rpx; flex-shrink: 0; }
+.msg-badge {
+  position: absolute; top: -12rpx; right: -8rpx;
+  min-width: 36rpx; height: 36rpx; padding: 0 10rpx;
+  border-radius: 999rpx;
+  background: linear-gradient(135deg, #f87171, #f59e0b);
+  font-size: 23rpx; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 6rpx rgba(248, 113, 113, 0.6);
+}
+
+/* ============ 区块标题 ============ */
+.section-title {
+  font-size: 29rpx; font-weight: 700;
+  margin: 0 6rpx 10rpx;
+  display: flex; align-items: center;
+  letter-spacing: 1rpx;
+}
+.section-title::before {
+  content: '';
+  width: 8rpx; height: 30rpx;
+  border-radius: 4rpx;
+  background: linear-gradient(180deg, #2f6bff, #22d3ee);
+  margin-right: 14rpx;
+  box-shadow: 0 0 6rpx rgba(34, 211, 238, 0.5);
+}
+
+/* ============ 选择角色：四卡片（专属图标底板 + 质感层级 + 按压反馈） ============ */
+.role-grid { display: flex; flex-direction: column; gap: 20rpx; margin-bottom: 8rpx; }
+.role-card {
+  display: flex; align-items: center; gap: 24rpx;
+  border-radius: 28rpx;
+  padding: 26rpx 24rpx;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 4rpx 12rpx rgba(2, 6, 16, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+.mini-emblem {
+  width: 88rpx; height: 88rpx;
+  border-radius: 24rpx;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+.mini-icon { width: 50rpx; height: 50rpx; }
+.glow-b {
+  background: radial-gradient(circle at 30% 20%, rgba(47, 107, 255, 0.4), rgba(47, 107, 255, 0.1) 70%);
+  border: 1px solid rgba(77, 141, 255, 0.6);
+  box-shadow: 0 0 6rpx rgba(47, 107, 255, 0.4);
+}
+.glow-c {
+  background: radial-gradient(circle at 30% 20%, rgba(34, 211, 238, 0.35), rgba(34, 211, 238, 0.08) 70%);
+  border: 1px solid rgba(34, 211, 238, 0.6);
+  box-shadow: 0 0 6rpx rgba(34, 211, 238, 0.35);
+}
+.glow-p {
+  background: radial-gradient(circle at 30% 20%, rgba(167, 139, 250, 0.35), rgba(167, 139, 250, 0.08) 70%);
+  border: 1px solid rgba(167, 139, 250, 0.6);
+  box-shadow: 0 0 6rpx rgba(167, 139, 250, 0.35);
+}
+.glow-g {
+  background: radial-gradient(circle at 30% 20%, rgba(52, 211, 153, 0.35), rgba(52, 211, 153, 0.08) 70%);
+  border: 1px solid rgba(52, 211, 153, 0.6);
+  box-shadow: 0 0 6rpx rgba(52, 211, 153, 0.35);
+}
+.role-name { font-size: 29rpx; font-weight: 700; color: #eaf2ff; letter-spacing: 1rpx; }
+.role-desc { font-size: 23rpx; color: #9db1cd; margin-top: 8rpx; letter-spacing: 0.5rpx; }
+.go-arrow {
+  font-size: 32rpx;
+  width: 48rpx; height: 48rpx;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: rgba(34, 211, 238, 0.08);
+  border: 1px solid rgba(34, 211, 238, 0.25);
+}
+
+/* ============ 协同链路 ============ */
+.chain-card { padding: 16rpx 28rpx; }
+.chain-row { display: flex; align-items: center; gap: 24rpx; padding: 24rpx 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.chain-row:last-child { border-bottom: none; }
+.chain-index {
+  width: 54rpx; height: 54rpx; flex-shrink: 0;
+  border-radius: 18rpx;
+  background: linear-gradient(145deg, rgba(47, 107, 255, 0.2), rgba(34, 211, 238, 0.08));
+  border: 1px solid rgba(77, 141, 255, 0.45);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 27rpx;
+  box-shadow: 0 0 6rpx rgba(47, 107, 255, 0.2);
+}
+
+/* ============ v5 图标：<view> + background-image 内联 url-encoded SVG ============ */
+/* 语义：dock=品牌四宫格 / dashboard=驾驶舱仪表 / message=信封 / factory=厂房烟囱 / truck=货车 / warehouse=仓库 / box=立方体 */
+/* 编码规范与 app.wxss 网格纹理一致：属性单引号、# 转 %23、url 双引号包裹 */
+.ic {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.ic-logo {
+  width: 56rpx; height: 56rpx;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABNklEQVR4nO3ay3HCQBAEUOEiAkLYu/MPhPuG4BTMVaVCBbK121rxXgAzgi59ED1NAAAAAAAAcGaXVoPL/ef3vzPq9+1y1H17+WoxdI8vY8uc3vsOHcDeH6K8mNd736EDaHXwZWVu732HDqD1QZfF/N77hroH8D4BhF17LDny42QJPPnMOQPCBBAmgDABhAkgTABhAggTQJgAwgTwCa8iev/cL+HXC1s4A8IEcJYAWv+hXRfze+8b4gxoddB1ZW7vfUNcgvY++PpiXu99Q9wD9voQ9c05vfcBnIRu6Ixu6IJu6B/ohm6jG/qEbugTuqE04W1omG7oXTf0o7kEhQkgTABhAggTQJgAwgQQJoAwAYTphoY5A8IEEKYbukI3dEY3dAPd0G10Q2d0QwEAAAAAAAAAAKbxPQAuDqvzmQ/CBAAAAABJRU5ErkJggg==");
+}
+.ic-dashboard {
+  width: 46rpx; height: 46rpx;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABZUlEQVR4nO3X0Y0CMQyE4RjR3lRDHVSTAjnd2wkJAbdrx3b+rwGSGZJ4xwAAAAAAAAAAAAAAAAAAAAAAFKb74zESuIyNw1eCErYrQE+hry5hqwL0IuyVJWxTgN6EvKqELQrQB+HOm9lYoH0BShx++wKUPPzWBahA+G0LUJHwWxagQuG3K0DFwm9VgAqG36YAFQ3/lx3ZXIZNKUn4/83p6vnDWch5jUcKbnEFVUYBi1mXayard9cTJ2AxCqhQQIZxs6JPcrtG/2AXOuldvJwZ7i6PtU78+PvqDaCEcfqXt8sj3PUkyGFf5r2QDu+CHPdrUf+GikUoYI8WfSQrFKHAfdnKu3EmKmPVHizTAzUDC8myXqsw/cwDG824pr9c/nFdx1CPU+p65DsVMZ2ux5A7t3IR0/ldCp9CKpQxA4eBpWOgEpWxaiROM4dHF5LlGyTFIirM6wAAAAAAAAAAAAAAAAAAACO/H/04vLK2fHVNAAAAAElFTkSuQmCC");
+}
+.ic-message {
+  width: 46rpx; height: 46rpx;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABcElEQVR4nO3ZQVLDMAwF0JThBBxBe+5/EPY5AleAYdFNh4GQxJYU3tt0pouk1o9lO10WAAAAAAAAAADgam5HLxBv7x/LP7e+vuyu49O5P4W/EkAyASQTQDIBJBNA523o1i3okW1attFjfF4mDqJTEDHpfHPL+IGVg4jJ40o7CVcMIRLGMqUFVW9Lkfg6JX0XFMnvkrLvnzYDsmdDFHmJWCKAmUFUKfyUFrS3kDGoSBU3DMPXgCMhxElBHLnW6LY4ZRH+GkTWbIgDhZ+xJk3dBc2cDVH4qU9dhO+D21Oc2LBIdzuhp50DRrSlKN5uSh7E1hPaUpd2U/YcsJ7QlvbeM1v6DMgoSpXil5kBZ82GToUvG8CIICoWvmQLGlG8ysVvEcBv28Sfvq9e/DYB3G0taIfCtwzg8cn+7rNT8VsGcPdY6G6Fbx/AVQggmQCufBCr9v9rRWZAMgEkE0AyASQTQDIBAAAAAAAAAAAAAADA0t4nf2i5ySIZ2VMAAAAASUVORK5CYII=");
+}
+.ic-factory {
+  width: 50rpx; height: 50rpx;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABgUlEQVR4nO3bQW7CMBBGYRtxvTkN5+A0PmAQi0gsWiDE9j8zft+mUhdVOi82qauUAgAAAAAAAAAA3rH7tr1+jehaArI/Br5/r91qLYGEulg7cKdHCRHiIkdsM89A737mrIDutyALvL+HDmDJB+82gC0y+N2lBB9+C/Jh+5+aafDWcfXMCitdAXbftp53fcTVILngX+/UdmDAZ1fDrJg12+B7RUi3Bf261TTRtjLraaxmu+tHDHHkTVAzDn7k8UXprGYc/O7TWY+Ha72svM97WFldjiJW/AvWOv3/4VQAD0s4eoiph3GZBu/iM+DbgUbc59uBaz7zu7l51o7sTABXx9ErIoAYAcQIIEYAMQKIDf1DLNqzv+JxmxUgRgAxAogRQIwAYgQQI4AYAcQIIEYAMQKIEUBsyVeUmqNDQlaAGAHECCBGADECiBFAzN1jqJe3JGdhBYgRQIwAYgQQI4AYAcR4Q6YD3pAJjC1IjABiBBAjgBgBAAAAAAAAAAAAAKCk9QALQJ2tWMhZqgAAAABJRU5ErkJggg==");
+}
+.ic-truck {
+  width: 50rpx; height: 50rpx;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACV0lEQVR4nO2cyXHEIBBFNSpH4BD67vwD8b1DcAp2TZUPOswCojfEe+cZ+OpPNwghbRsAAAAAAAAAAAAAAAAAAAAAgDm37aLI98/vaBv69eken927g9kRAyNfgQENwfc04VZ1ZFTEoySRAcmDDgOSwYDkLFhmDtDO+v3u+qzmAzLgZICtBiAGDGBhgksJiriD7A3CWU0t7Y9cLxlgENyRTMCABjwzGgOSJ+WPbREkYNl876M3W8iAZKMxwBgyoEAG9GQBGZAMBiSDAcksswxVh5spi6UtGZAMBiSDAavNAd7bu7PpCDGgd7KSw+8tg1BFR5gBFqsE+W9jNACjWqx0hBjgsfMoTgHI1jHdJCxFTmMs/VBeipiw9J2wXMSEaQ2w4FUdjzJ4OQO0cfI8/s7TjOUMkGKla8pJ+EpgQDIYkMypOcDi6PajNtT5GOASGdByguxZEKXhREH2VsTUJah19MrFRvkrukfT2RF6Jqg60FYFHS3ZapoBUeVB3/RTRUeZEnS2pIhxKaqi4wjL0GTSDdAiq5osHekGSJEVT5aOdANWZ6+c3mpcFqrocDMgKo3lTT9VdLgYEDWK1GnURelo/d9e/WnUlXXcuV15N1QTdbSa5/a1lCrn8TVBR0+fLEOT2at/zqXaPo515occeB0pA2IYwAgdoe8Jt3bmPXp1Mh1HTCao3guzPJGmAweovHT0kPbygwX64KKr6AhfBUVv5+qT/qroaIVHkld7JLnKNoIate8qcrYlZIaxIfVyJACa+Jakl44j4c9Bq7yfK0V0AAAAAABs8fwBlfGBQzcVtAEAAAAASUVORK5CYII=");
+}
+.ic-warehouse {
+  width: 50rpx; height: 50rpx;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABrElEQVR4nO3cS27DMAyEYSkoekcfpKfIQXjHbNJNV0YQuDGlGVr/t2uB2CJHEmTk0RoAAAAAAAAAvBP3x/Pd31X0VkzsGr39fPdX/2tF3FohcXCWV1oNJWZKnGio+2qwHlwkzmTXIGy3oEjeRly3JbtZERMa5bQabAYSghnqEESv3vjtxTH0k2u0FQOI5NNNxdOS5KajGxWFgph6s9mNiQJBTDuGKpqxnWjirEPB8JRdZmGYjGNv2IVdCw6zcd1WKNJ5W+qrNN51vP0qhVQd/6kXV34CdalFsh86NV5d1yUfbjLMqrPPGFylxs+udfiTcOXmzxh/HzUbqjd+Vv1fRy+YfeOKtr/aMh/IUregKzd/VJ1pAazS/Ox6bT8VsQoCECMAMQIQIwAxAhAjADECECMAMQIQIwAxAhAjADECECMAMQIQS39L8qxY7Et6rAAxAhAjADECECMAMQIQszuGZh0fXX+cY48VIEYAYgQgRgBiBCBGAGKljqFR5Gj5H6wAMQIQG/YlvdVtB5/aWQFiBCBGAGJWP15U3Sdv9rMCxAgAAAAAAAAAAACgjfUL6WXAeY1GDBMAAAAASUVORK5CYII=");
+}
+.ic-box {
+  width: 50rpx; height: 50rpx;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACFElEQVR4nO2dTW7CMBBGA8p1ups79Uy9k3c9UCsWSKgNDY1/vm+c9zZISCHjefHYGNksCwAAAAAAAAAAAMAe8fnx9fiakXVJRjxJ9uP75e39siQhTaBx4CnPIMI6wGhYWlxl2AUVA+q5kwybQEIwkDqIkAYQRrMXlYzLLHU9ko4Xw240KkGRTETXG6iTEQlkNP9Q10aHaVzTN9A9zstMjckYv3QtqIjn4b1mUf+hOgGzrdHE4PYcunC2pCvbOawEZVkujsGlaFU2shiJUI0B0kE4xL3CYS3K5hexGCTDIemWAnqXKLfEdxPQcm4dlb0iw8pr1x6gkBEG324tS9C9MS0SFBslKlviZWNAr15Ri2pKbLMWFCf9TdhmFlQalqhX7+WAjYA7M9T11AJaynBNehoBR0tUhsTfuS7JKDvJzZT8lAJmAwFiECAGAWIQIAYBYhAgBgFiECAGAWIQIAYBYhAgBgFiECAGAWIQIAYBYhAgBgFiECAGAbMJcN0I4dq+9Syb8FwfrHXmTXgZenPKnfLxxz17fnaPe14VT8jtOrexIipiqmkL+4TFWG4DLTtduqYEue05SHliVhwQ4Jb41GfGxYsCXJOe/tTEUaQ/NTGriDLjuaHuMspZTs59Rpx0n7A8gJ+cbZ+wTSBbZJjF1GIZ1Baz7hO2D3BPxC3JW+/9uhDaExP8ixIAAAAAAAAAACyn4RtlcFVZWPnOxgAAAABJRU5ErkJggg==");
+}

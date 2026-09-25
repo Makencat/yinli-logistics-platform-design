@@ -1,0 +1,70 @@
+.role-hero { min-height: auto; }
+
+.radar-ring {
+  width: 120rpx; height: 120rpx;
+  border-radius: 50%;
+  border: 1px dashed rgba(34, 211, 238, 0.5);
+  display: flex; align-items: center; justify-content: center;
+  animation: spin 18s linear infinite;
+  flex-shrink: 0;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.radar-core {
+  width: 52rpx; height: 52rpx;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.9), rgba(47, 107, 255, 0.2));
+  box-shadow: 0 0 6rpx rgba(34, 211, 238, 0.6);
+}
+
+.session-card { display: flex; align-items: center; gap: 20rpx; }
+.session-avatar {
+  width: 76rpx; height: 76rpx; border-radius: 24rpx;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(52, 211, 153, 0.12);
+  border: 1px solid rgba(52, 211, 153, 0.45);
+  flex-shrink: 0;
+}
+.session-dot {
+  width: 22rpx; height: 22rpx; border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 6rpx rgba(52, 211, 153, 0.9);
+}
+
+.role-list { display: flex; flex-direction: column; gap: 20rpx; margin-top: 24rpx; }
+.role-big {
+  display: flex; align-items: center; gap: 24rpx;
+  padding: 34rpx 28rpx;
+  border-radius: 28rpx;
+  background: linear-gradient(160deg, rgba(24, 34, 58, 0.97), rgba(15, 22, 40, 0.99));
+  border: 1px solid rgba(133, 168, 226, 0.16);
+  box-shadow: 0 4rpx 12rpx rgba(2, 6, 16, 0.38);
+  position: relative;
+  overflow: hidden;
+}
+.role-big::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 5rpx;
+  background: linear-gradient(180deg, #2f6bff, #22d3ee);
+  opacity: 0.85;
+}
+.rb-emblem {
+  width: 100rpx; height: 100rpx;
+  border-radius: 30rpx;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.rb-name { font-size: 38rpx; font-weight: 800; color: #eaf2ff; letter-spacing: 2rpx; }
+.rb-en { font-size: 23rpx; letter-spacing: 4rpx; color: #4d8dff; font-weight: 700; }
+.q-go { font-size: 34rpx; }
+
+.tip-box {
+  margin-top: 28rpx;
+  padding: 26rpx 28rpx;
+  border-radius: 24rpx;
+  background: rgba(77, 141, 255, 0.07);
+  border: 1px dashed rgba(77, 141, 255, 0.32);
+  font-size: 24rpx;
+  color: #a8bad6;
+  line-height: 1.8;
+}

@@ -1,0 +1,87 @@
+.auth-page { padding-top: 8rpx; }
+.auth-hero { min-height: auto; }
+
+.auth-emblem {
+  width: 112rpx; height: 112rpx;
+  border-radius: 30rpx;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.auth-card { margin-top: 8rpx; }
+
+.field { margin-bottom: 28rpx; }
+.field-label {
+  display: block;
+  font-size: 24rpx;
+  color: #a8bad6;
+  letter-spacing: 2rpx;
+  margin-bottom: 12rpx;
+}
+.field-input {
+  height: 90rpx;
+  box-sizing: border-box;
+  border-radius: 20rpx;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  padding: 0 24rpx;
+  font-size: 28rpx;
+  color: #e6edf7;
+}
+.ph { color: #7e91b4; }
+
+.eye-btn {
+  height: 90rpx;
+  padding: 0 22rpx;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 20rpx;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  flex-shrink: 0;
+}
+.eye-btn:active { background: rgba(255, 255, 255, 0.17); }
+
+.err-line { color: #fca5a5; font-size: 24rpx; margin-top: 4rpx; }
+
+.tip-box {
+  margin-top: 26rpx;
+  padding: 26rpx 28rpx;
+  border-radius: 24rpx;
+  background: rgba(77, 141, 255, 0.07);
+  border: 1px dashed rgba(77, 141, 255, 0.32);
+  font-size: 24rpx;
+  color: #a8bad6;
+  line-height: 1.8;
+}
+
+/* ===== v9 交互增强 ===== */
+.field-input { transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease; }
+.field-input.focus {
+  border-color: rgba(77, 141, 255, 0.62);
+  background: rgba(77, 141, 255, 0.07);
+  box-shadow: 0 0 0 4rpx rgba(77, 141, 255, 0.14);
+}
+.eye-btn { transition: background 160ms ease, border-color 160ms ease; }
+.eye-btn-hover { background: rgba(255, 255, 255, 0.14); }
+.eye-btn image { width: 40rpx; height: 40rpx; opacity: 0.9; }
+.err-line {
+  display: flex; align-items: center; gap: 10rpx;
+  animation: errShake 340ms ease;
+}
+.err-dot { width: 12rpx; height: 12rpx; border-radius: 50%; background: #f87171; flex-shrink: 0; }
+@keyframes errShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8rpx); }
+  60% { transform: translateX(8rpx); }
+}
+.quick-fill {
+  padding: 8rpx 20rpx;
+  border-radius: 999rpx;
+  background: rgba(34, 211, 238, 0.12);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  color: #7ee6f7;
+  font-size: 23rpx;
+  line-height: 1.5;
+}
+.quick-fill-hover { background: rgba(34, 211, 238, 0.24); }
+.btn.is-loading { opacity: 0.85; pointer-events: none; }

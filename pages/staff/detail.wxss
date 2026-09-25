@@ -1,0 +1,42 @@
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-top: 20rpx;
+}
+
+.kv-addr {
+  font-size: 23rpx;
+  color: #9db1cd;
+  margin-top: 8rpx;
+  line-height: 1.5;
+}
+.kv-sm { font-size: 23rpx; font-weight: 500; }
+
+.op-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14rpx;
+  margin-top: 24rpx;
+}
+.op-row .btn { flex: 1; min-width: 180rpx; }
+
+.axis-title {
+  font-size: 24rpx;
+  color: #8fb2ff;
+  font-weight: 700;
+  letter-spacing: 2rpx;
+  margin-bottom: 6rpx;
+}
+.stage-axis { padding: 0 4rpx; }
+.stage-node .st { width: 100%; }
+
+.timeline { margin-top: 12rpx; }
+.timeline .tl-item {
+  position: relative;
+  padding-left: 42rpx;
+  margin-bottom: 24rpx;
+  display: flex;
+  flex-direction: column;
+}
+.timeline .tl-item:last-child::before { display: none; }

@@ -1,0 +1,53 @@
+<nav-bar title="客户工作台"></nav-bar>
+
+<view class="page">
+  <view class="hero">
+    <view class="grid-deco"></view>
+    <view class="row between">
+      <view class="col grow">
+        <view class="hero-kicker">CUSTOMER CONSOLE</view>
+        <view class="hero-title">{{greeting}}，{{client.name}}</view>
+        <view class="hero-sub">账号 {{client.account}} · 已登录客户账户</view>
+      </view>
+      <view class="glow-g lg-emblem">
+        <image class="icon-lg" src="{{iconBox}}" mode="aspectFit"/>
+      </view>
+    </view>
+    <view class="hero-stats row">
+      <view class="hero-stat" wx:for="{{stats}}" wx:key="k">
+        <view class="stat-num c-cyan num">{{item.v}}</view>
+        <view class="stat-k text-sub">{{item.k}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section-title">客户菜单</view>
+  <view class="menu-grid">
+    <view
+      class="menu-card"
+      wx:for="{{menus}}"
+      wx:key="key"
+      data-key="{{item.key}}"
+      bindtap="onMenu"
+      hover-class="role-card-hover"
+    >
+      <view class="mc-emblem {{item.glow}}">
+        <image class="icon-lg" src="{{item.icon}}" mode="aspectFit"/>
+      </view>
+      <view class="mc-badge badge" wx:if="{{item.badge}}">{{item.badge}}</view>
+      <text class="mc-n">{{item.n}}</text>
+      <text class="mc-d">{{item.d}}</text>
+    </view>
+  </view>
+
+  <block wx:if="{{notices.length}}">
+    <view class="section-title mt28">最新通知</view>
+    <view class="card plain" wx:for="{{notices}}" wx:key="id">
+      <view class="row between">
+        <text class="text-sm ellip">{{item.title}}</text>
+        <text class="text-dim text-xs">{{item.time}}</text>
+      </view>
+      <text class="text-sub text-xs mt8 clamp2">{{item.text}}</text>
+    </view>
+  </block>
+</view>

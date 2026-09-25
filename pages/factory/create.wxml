@@ -1,0 +1,77 @@
+<nav-bar title="新建需求单" show-back="{{true}}"></nav-bar>
+
+<view class="page">
+  <view class="card plain form-card">
+    <view class="f-item">
+      <view class="f-label">产品名称 <text class="req">*</text></view>
+      <input class="f-input" placeholder="如：工业润滑油 200L桶" placeholder-class="ph"
+             value="{{form.product}}" maxlength="30" data-k="product" bindinput="onInput"/>
+    </view>
+
+    <view class="f-row">
+      <view class="f-item grow">
+        <view class="f-label">类别</view>
+        <picker class="f-picker" range="{{categories}}" value="{{cateIdx}}" bindchange="onCate">
+          <view class="f-picker-v">
+            <text class="{{categories[cateIdx] ? '' : 'ph'}}">{{categories[cateIdx] || '请选择'}}</text>
+            <image class="icon-sm" src="{{icons.chevron_right[0]}}" mode="aspectFit"/>
+          </view>
+        </picker>
+      </view>
+      <view class="f-item grow">
+        <view class="f-label">紧急</view>
+        <view class="f-toggle {{form.urgent ? 'on' : ''}}" hover-class="tap-hover" bindtap="toggleUrgent">
+          <view class="toggle-thumb"></view>
+        </view>
+      </view>
+    </view>
+
+    <view class="f-row">
+      <view class="f-item grow">
+        <view class="f-label">数量 <text class="req">*</text></view>
+        <input class="f-input num" type="number" placeholder="如 1200" placeholder-class="ph"
+               value="{{form.qty}}" maxlength="8" data-k="qty" bindinput="onInput"/>
+      </view>
+      <view class="f-item">
+        <view class="f-label">单位</view>
+        <picker class="f-picker" range="{{units}}" value="{{unitIdx}}" bindchange="onUnit">
+          <view class="f-picker-v">
+            <text class="{{units[unitIdx] ? '' : 'ph'}}">{{units[unitIdx] || '单位'}}</text>
+            <image class="icon-sm" src="{{icons.chevron_right[0]}}" mode="aspectFit"/>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="f-row">
+      <view class="f-item grow">
+        <view class="f-label">库位批次</view>
+        <input class="f-input" placeholder="如 A-01" placeholder-class="ph"
+               value="{{form.lot}}" maxlength="20" data-k="lot" bindinput="onInput"/>
+      </view>
+      <view class="f-item grow">
+        <view class="f-label">到货客户</view>
+        <input class="f-input" placeholder="客户名称" placeholder-class="ph"
+               value="{{form.customer}}" maxlength="20" data-k="customer" bindinput="onInput"/>
+      </view>
+    </view>
+
+    <view class="f-item">
+      <view class="f-label">期望提货时段</view>
+      <picker class="f-picker" range="{{windows}}" value="{{winIdx}}" bindchange="onWin">
+        <view class="f-picker-v">
+          <text class="{{windows[winIdx] ? '' : 'ph'}}">{{windows[winIdx] || '请选择（默认上午）'}}</text>
+          <image class="icon-sm" src="{{icons.chevron_right[0]}}" mode="aspectFit"/>
+        </view>
+      </picker>
+    </view>
+
+    <view class="f-item">
+      <view class="f-label">备注说明</view>
+      <textarea class="f-area" placeholder="装卸要求、防护说明等（选填）" placeholder-class="ph"
+                value="{{form.note}}" maxlength="100" data-k="note" bindinput="onInput"/>
+    </view>
+  </view>
+
+  <button class="btn primary block" hover-class="button-hover" bindtap="submit">提交需求单</button>
+</view>

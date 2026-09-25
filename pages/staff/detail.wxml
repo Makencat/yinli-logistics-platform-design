@@ -1,0 +1,97 @@
+<nav-bar title="客户货物调度" show-back="{{true}}"></nav-bar>
+
+<view class="page has-bar">
+  <view class="hero">
+    <view class="grid-deco"></view>
+    <view class="col">
+      <view class="hero-kicker">DISPATCH DETAIL</view>
+      <view class="hero-title">{{client.name}}</view>
+      <view class="hero-sub">账号 {{client.account}} · {{client.contact}} {{client.phone}} · 共 {{ships.length}} 单</view>
+    </view>
+  </view>
+
+  <view class="card plain" wx:for="{{ships}}" wx:key="id">
+    <view class="row between">
+      <view class="col grow">
+        <text class="text-sm">{{item.product}}</text>
+        <text class="text-dim text-xs mt8">{{item.orderNo}} · 批次 {{item.lot}} · {{item.qty}}{{item.unit}}</text>
+      </view>
+      <view class="state-pill" style="color:{{item.stageColor}};background:{{item.stageColor}}1f;border:1px solid {{item.stageColor}}66;">{{item.stageText}}</view>
+    </view>
+
+    <view class="chip-row">
+      <view class="chip {{item.loaded ? 'on' : ''}}">师傅{{item.loaded ? '已装车' : '未装车'}}</view>
+      <view class="chip {{item.departed ? 'on' : ''}}">车辆{{item.departed ? '已出发' : '未出发'}}</view>
+      <view class="chip {{item.arrived ? 'on' : 'warn'}}">{{item.arrived ? '已送达' : '运输中'}}</view>
+    </view>
+
+    <view class="meter mt16"><view style="width:{{item.progress}}%"></view></view>
+
+    <view class="kv-grid">
+      <view class="kv">
+        <view class="kv-k">分配仓库</view>
+        <view class="kv-v">{{item.warehouseName}}</view>
+      </view>
+      <view class="kv">
+        <view class="kv-k">运输师傅</view>
+        <view class="kv-v">{{item.driverName}}</view>
+        <view class="kv-addr">{{item.plate}} · {{item.vehicleType}}</view>
+      </view>
+      <view class="kv full">
+        <view class="kv-k">仓库地址</view>
+        <view class="kv-v kv-sm">{{item.warehouseAddr}}</view>
+      </view>
+    </view>
+
+    <view class="op-row">
+      <view class="btn sm ghost" hover-class="button-hover" data-id="{{item.id}}" bindtap="openWarehouse">更改仓库</view>
+      <view class="btn sm ghost" hover-class="button-hover" data-id="{{item.id}}" bindtap="openDriver">指派师傅</view>
+      <view class="btn sm soft" hover-class="button-hover" data-id="{{item.id}}" bindtap="nextStage">同步下一节点</view>
+    </view>
+
+    <view class="axis-title mt28">进度时间轴</view>
+    <view class="stage-axis">
+      <view class="stage-node {{node.state}}" wx:for="{{item.stages}}" wx:for-item="node" wx:key="key">
+        <view class="sl"></view>
+        <view class="sd"></view>
+        <view class="st">{{node.text}}</view>
+      </view>
+    </view>
+
+    <view class="axis-title mt28">运输流水</view>
+    <view class="timeline">
+      <view class="tl-item done" wx:for="{{item.timeline}}" wx:for-item="log" wx:key="text">
+        <view class="tl-dot"></view>
+        <text class="text-sm">{{log.text}}</text>
+        <text class="text-dim text-xs mt4">{{log.time}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{!ships.length}}">该客户暂无运输单</view>
+</view>
+
+<view class="fixed-bar">
+  <view class="btn primary block" hover-class="button-hover" bindtap="notifyThis">一键通知该客户</view>
+</view>
+
+<view wx:if="{{picker.show}}" class="picker-mask" hover-class="none" bindtap="closePicker"></view>
+<view wx:if="{{picker.show}}" class="picker-panel">
+  <view class="picker-head">
+    <text class="title-sm">{{picker.title}}</text>
+    <text class="text-dim text-xs" bindtap="closePicker">关闭</text>
+  </view>
+  <view
+    class="picker-item {{picker.current === item.id ? 'on' : ''}}" hover-class="tap-hover"
+    wx:for="{{picker.options}}"
+    wx:key="id"
+    data-id="{{item.id}}"
+    bindtap="choose"
+  >
+    <view class="col grow">
+      <text class="text-sm">{{item.name}}</text>
+      <text class="text-dim text-xs mt8">{{item.sub}}</text>
+    </view>
+    <text wx:if="{{picker.current === item.id}}" class="c-cyan text-xs">当前</text>
+  </view>
+</view>

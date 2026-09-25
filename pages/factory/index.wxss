@@ -1,0 +1,47 @@
+.hero-emblem {
+  width: 128rpx; height: 128rpx;
+  border-radius: 34rpx;
+  background: rgba(77, 141, 255, 0.12);
+  border: 1px solid rgba(77, 141, 255, 0.35);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 6rpx rgba(77, 141, 255, 0.25);
+  margin-right: 10rpx;
+}
+
+.tabs {
+  display: flex;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 22rpx;
+  padding: 8rpx;
+  margin: 26rpx 0 24rpx;
+}
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 16rpx 0;
+  border-radius: 16rpx;
+  font-size: 26rpx;
+  color: #a8bad6;
+}
+.tab-on {
+  background: linear-gradient(135deg, rgba(47, 107, 255, 0.5), rgba(34, 211, 238, 0.4));
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 4rpx 8rpx rgba(47, 107, 255, 0.3);
+}
+
+.d-icon {
+  width: 68rpx; height: 68rpx;
+  border-radius: 20rpx;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.di-warn  { background: rgba(245, 158, 11, 0.14); border: 1px solid rgba(245, 158, 11, 0.4); }
+.di-cyan  { background: rgba(34, 211, 238, 0.14); border: 1px solid rgba(34, 211, 238, 0.4); }
+.di-green { background: rgba(52, 211, 153, 0.14); border: 1px solid rgba(52, 211, 153, 0.4); }
+
+.d-meta { flex-wrap: wrap; }
+.d-k { font-size: 24rpx; color: #93a7c4; }
+.d-v { color: #dbe6f7; font-weight: 500; }
+.chev { width: 30rpx; height: 30rpx; }
